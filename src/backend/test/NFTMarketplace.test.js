@@ -121,14 +121,14 @@ describe("NFTMarketplace", function(){
             // fails for invalid item ids
             await expect(
                 marketplace.connect(addr2).purchaseItem(2, { value: totalPriceInWei })
-            ).to.be.revertedWidth("item doesn't exist");
+            ).to.be.revertedWith("item doesn't exist");
             await expect(
                 marketplace.connect(addr2).purchaseItem(0, { value: totalPriceInWei })
-            ).to.be.revertedWidth("item doesn't exist");
+            ).to.be.revertedWith("item doesn't exist");
             // Fails when not enough ehter is paid with the transaction
             await expect(
                 marketplace.connect(addr2).purchaseItem(1, { value: toWei(price) })
-            ).to.be.revertedWidth("not enough ether to cover item price and market fee");
+            ).to.be.revertedWith("not enough ether to cover item price and market fee");
         });
     })
 })
